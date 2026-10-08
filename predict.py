@@ -139,7 +139,7 @@ class DirectionEnsemble:
 if __name__ == "__main__":
     from data_loader import StockDataLoader
     import os
-    loader  = StockDataLoader(['AAPL'], fmp_key='9MDQnnX5wuBrZEYlbbPzLFdQLgwHmIp1')
+    loader  = StockDataLoader(['AAPL'], fmp_key=os.getenv('FMP_API_KEY') or os.getenv('POLYGON_API_KEY'))
     results = loader.process_all_tickers()
     if 'AAPL' in results:
         ens    = DirectionEnsemble()

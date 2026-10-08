@@ -13,7 +13,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - POLYGON_API_KEY=${POLYGON_API_KEY:-g3EzLhQU1wd4Dkzx6vwC0XMGtjvOi3C8}
+      - POLYGON_API_KEY=${POLYGON_API_KEY:-}
+      - FMP_API_KEY=${FMP_API_KEY:-}
       - PYTHONUNBUFFERED=1
     volumes:
       # Mount code for development (hot reload)

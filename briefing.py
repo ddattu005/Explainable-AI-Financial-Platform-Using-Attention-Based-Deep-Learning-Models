@@ -6,7 +6,7 @@ Author: ATHENA Project
 
 import os
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 
 def generate_ai_briefing(context: dict) -> str:

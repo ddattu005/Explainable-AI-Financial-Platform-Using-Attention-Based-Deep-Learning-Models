@@ -1,5 +1,6 @@
 venv/
 venv311/
+venv*/
 data/
 models/
 __pycache__/
@@ -8,3 +9,6 @@ __pycache__/
 ._*
 *.pth
 .vscode/
+.env
+.env.*
+frontend/node_modules/

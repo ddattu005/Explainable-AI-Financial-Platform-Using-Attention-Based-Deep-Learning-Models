@@ -29,7 +29,7 @@ from data_loader     import StockDataLoader, STOCK_UNIVERSE, TICKER_MAP, FEATURE
 from regime_detector import MarketRegimeDetector
 from predict         import DirectionEnsemble
 
-FMP_KEY = os.getenv('FMP_API_KEY') or os.getenv('POLYGON_API_KEY') or '9MDQnnX5wuBrZEYlbbPzLFdQLgwHmIp1'
+FMP_KEY = os.getenv('FMP_API_KEY') or os.getenv('POLYGON_API_KEY')
 
 # ─── Pydantic Models ───────────────────────────────────────
 class PredictionRequest(BaseModel):

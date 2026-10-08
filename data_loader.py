@@ -10,7 +10,7 @@ CHANGES FROM v2:
   4. Returns y_dir_train / y_dir_val / y_dir_test for multi-task training
   5. More robust indicator calculation (no NaN bleed)
 
-FMP API Key: 9MDQnnX5wuBrZEYlbbPzLFdQLgwHmIp1
+FMP API Key: provide via FMP_API_KEY environment variable
 """
 
 import numpy as np
@@ -109,7 +109,7 @@ class StockDataLoader:
     def __init__(self, tickers, polygon_key=None, fmp_key=None,
                  seq_length=60, train_ratio=0.7, val_ratio=0.15):
         self.tickers     = [t.upper() for t in tickers]
-        self.fmp_key     = fmp_key or polygon_key or os.getenv('FMP_API_KEY') or '9MDQnnX5wuBrZEYlbbPzLFdQLgwHmIp1'
+        self.fmp_key     = fmp_key or polygon_key or os.getenv('FMP_API_KEY')
         self.seq_len     = seq_length
         self.train_ratio = train_ratio
         self.val_ratio   = val_ratio

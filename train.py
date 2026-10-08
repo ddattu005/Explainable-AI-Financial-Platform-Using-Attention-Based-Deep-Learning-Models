@@ -306,7 +306,7 @@ def main():
     # 1. Load data
     loader = StockDataLoader(
         tickers=['AAPL', 'MSFT', 'TSLA', 'GOOGL', 'AMZN', 'JPM', 'NVDA', 'META', 'XOM', 'JNJ'],
-        fmp_key='9MDQnnX5wuBrZEYlbbPzLFdQLgwHmIp1'
+        fmp_key=os.getenv('FMP_API_KEY') or os.getenv('POLYGON_API_KEY')
     )
     results = loader.process_all_tickers()
 
