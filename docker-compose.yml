@@ -1,0 +1,52 @@
+# ATHENA Project - Docker Compose Configuration
+# Week 2 - API Deployment
+
+version: '3.8'
+
+services:
+  # FastAPI Backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: athena-api
+    ports:
+      - "8000:8000"
+    environment:
+      - POLYGON_API_KEY=${POLYGON_API_KEY:-g3EzLhQU1wd4Dkzx6vwC0XMGtjvOi3C8}
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Mount code for development (hot reload)
+      - ./api:/app/api
+      - ./models:/app/models
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - athena-network
+
+networks:
+  athena-network:
+    driver: bridge
+
+# Optional: Add Redis for caching (Week 2 - Day 9)
+# Uncomment below to enable Redis caching
+#
+#  redis:
+#    image: redis:7-alpine
+#    container_name: athena-redis
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#      - redis-data:/data
+#    networks:
+#      - athena-network
+#    restart: unless-stopped
+#
+#volumes:
+#  redis-data:
